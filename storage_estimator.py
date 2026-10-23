@@ -53,6 +53,17 @@ class StorageEstimator:
         daily_bytes = daily_active_users * logs_per_user_per_day * avg_log_bytes
         return daily_bytes * retention_days
 
+def convert_to_gb(size_in_mb):
+    """Converts storage size from Megabytes to Gigabytes."""
+    return size_in_mb / 1024
+
+# Example usage within your storage estimator:
+if __name__ == "__main__":
+    # Assuming your program calculates storage in MB or KB
+    estimated_mb = 4239  # Example value
+    estimated_gb = convert_to_gb(estimated_mb)
+    
+    print(f"ESTIMATED STORAGE REQUIRED: {estimated_gb:.2f} GB")
 
 def run_interactive_menu():
     estimator = StorageEstimator()
